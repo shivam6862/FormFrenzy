@@ -1,11 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 import AddAnswerForm from "./AddAnswerForm";
 import AddEachQuestionForm from "./AddEachQuestionForm";
 import { postWithCredentials } from "../data/postWithCredentials";
-import { useProtectedResources } from "../data/useProtectedResources";
 
 const QuestionForm = () => {
   const navigate = useNavigate();
@@ -15,14 +13,18 @@ const QuestionForm = () => {
     questionType: "radio",
     options: [{ optionText: "Option 1" }],
     answer: false,
-    answerKey: "",
+    answerKey: [
+      { optionMark: "unmark" },
+      { optionMark: "unmark" },
+      { optionMark: "unmark" },
+      { optionMark: "unmark" },
+      { optionMark: "unmark" },
+    ],
     points: 0,
     open: true,
     required: false,
   };
 
-  const [radio, setRadio] = useState("");
-  const [checkbox, setCheckbox] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [untitledDocument, setUntitledDocument] = useState("");
   const [formDescription, setFormDescription] = useState("");
@@ -51,32 +53,6 @@ const QuestionForm = () => {
     newQuestion[i].questionType = type;
     setQuestions(newQuestion);
     console.log(newQuestion);
-  }
-
-  function pushIntoCheckbox(text) {
-    var newCheckbox = [...checkbox];
-    if (newCheckbox.includes(text)) {
-      newCheckbox = newCheckbox.filter((item) => item !== text);
-    } else {
-      newCheckbox.push(text);
-    }
-    setCheckbox(newCheckbox);
-    console.log(newCheckbox);
-  }
-
-  function pushIntoAnswerCheckbox(text, place) {
-    var newCheckbox = [...checkbox];
-    if (newCheckbox.includes(text)) {
-      newCheckbox = newCheckbox.filter((item) => item !== text);
-    } else {
-      newCheckbox.push(text);
-    }
-    var answer = "";
-    for (var i = 0; i < newCheckbox.length; i++)
-      answer = answer + newCheckbox[i] + "%";
-    var pushingAnswerToTheQuestion = [...questions];
-    pushingAnswerToTheQuestion[place].answerKey = answer;
-    console.log(pushingAnswerToTheQuestion);
   }
 
   function createNewQuestion() {
@@ -135,11 +111,9 @@ const QuestionForm = () => {
 
   const SubmitTheQuestionPaper = async () => {
     console.log("Submitted the Question!");
-    // const formId = uuid();
     const DataSendToTheBackend = [...questions];
     DataSendToTheBackend.push({ untitledDocument: untitledDocument });
     DataSendToTheBackend.push({ formDescription: formDescription });
-    // DataSendToTheBackend.push({ formId: formId });
     console.log(DataSendToTheBackend);
 
     const response = await postWithCredentials(
@@ -177,14 +151,6 @@ const QuestionForm = () => {
     setQuestions(IthQuestionExpand);
   }
 
-  function OptionAnswer(answer, questionNumber) {
-    console.log(questionNumber + "->" + answer);
-    var OptionAnswerOfQuestion = [...questions];
-    OptionAnswerOfQuestion[questionNumber].answerKey = answer;
-    setQuestions(OptionAnswerOfQuestion);
-    console.log(OptionAnswerOfQuestion);
-  }
-
   function OptionPoints(points, questionNumber) {
     console.log(questionNumber + "->" + points);
     var OptionPOintsOfQuestion = [...questions];
@@ -218,10 +184,6 @@ const QuestionForm = () => {
           <AddEachQuestionForm
             questions={questions}
             i={i}
-            setRadio={setRadio}
-            pushIntoCheckbox={pushIntoCheckbox}
-            radio={radio}
-            checkbox={checkbox}
             addOptionsToEachQuestion={addOptionsToEachQuestion}
             copyTheQuestion={copyTheQuestion}
             deleteTheQuestion={deleteTheQuestion}
@@ -240,12 +202,6 @@ const QuestionForm = () => {
             i={i}
             doneAnswer={doneAnswer}
             OptionPoints={OptionPoints}
-            setRadio={setRadio}
-            OptionAnswer={OptionAnswer}
-            pushIntoAnswerCheckbox={pushIntoAnswerCheckbox}
-            pushIntoCheckbox={pushIntoCheckbox}
-            radio={radio}
-            checkbox={checkbox}
           />
         )}
       </div>
@@ -277,12 +233,12 @@ const QuestionForm = () => {
             }}
           />
         </div>
+        <div className="question_section_questions">{questionsUI()}</div>
         <div className="add_Question_button">
           <button onClick={createNewQuestion} className="addQuestion">
             Add question
           </button>
         </div>
-        <div className="question_section_questions">{questionsUI()}</div>
       </div>
       <div className="submitPaper_button">
         <button onClick={SubmitTheQuestionPaper} className="submitPaper">

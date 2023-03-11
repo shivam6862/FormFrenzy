@@ -1,25 +1,29 @@
 import React from "react";
-import { useState } from "react";
+import { useUser } from "../auth/useUser";
+import { postWithCredentials } from "../data/postWithCredentials";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const QuestionPaper = ({ questionPaper }) => {
-  console.log(questionPaper);
-  const [radio, setRadio] = useState("");
-  const [checkbox, setCheckbox] = useState([]);
-  const [text, setText] = useState("");
-
-  function pushIntoCheckbox(text) {
-    var newCheckbox = [...checkbox];
-    if (newCheckbox.includes(text)) {
-      newCheckbox = newCheckbox.filter((item) => item !== text);
-    } else {
-      newCheckbox.push(text);
-    }
-    setCheckbox(newCheckbox);
-    console.log(newCheckbox);
-  }
+const QuestionPaper = ({ questionPaper, Answerpaper }) => {
+  const { user } = useUser();
+  const { id } = useParams();
+  const navigate = useNavigate();
+  
+  console.log(questionPaper.AllQuestion);
+  console.log(Answerpaper);
 
   const SubmitTheQuestionPaper = async () => {
     console.log("Submitted the Answer!");
+    console.log(Answerpaper);
+
+    const response = await postWithCredentials(
+      `${import.meta.env.VITE_REACT_BACKEND_URL}/addanswerpaper/${id}`,
+      { Answerpaper }
+    );
+    const newGroupId = await response.json();
+    console.log(newGroupId);
+
+    navigate(`/`);
   };
 
   return (
@@ -31,10 +35,13 @@ const QuestionPaper = ({ questionPaper }) => {
       <div>
         {questionPaper.AllQuestion.map((question, index) => (
           <div key={index} className="each_question">
-            <div className="QuestionAsked_OnClosed">
-              {index + 1}
-              {"."}
-              {question.questionText}
+            <div className="QuestionAskedInExamPaper">
+              <div className="QuestionAsked_OnClosed">
+                {index + 1}
+                {"."}
+                {question.questionText}
+              </div>
+              <div className="points">points {question.points}</div>
             </div>
             <div>
               {question.options.map((option, j) => (
@@ -46,13 +53,21 @@ const QuestionPaper = ({ questionPaper }) => {
                           <input
                             className="checkbox_box"
                             type={question.questionType}
-                            name="Each_Option"
+                            name={index}
                             value={option.optionText}
                             id={option.optionText}
-                            checked={radio === option.optionText}
-                            onChange={(e) => {
-                              console.log(e.target.value);
-                              setRadio(e.target.value);
+                            onClick={(e) => {
+                              {
+                                Answerpaper[index].optionsMark.map(
+                                  (option, k) => {
+                                    Answerpaper[index].optionsMark[
+                                      k
+                                    ].optionMark = "unmark";
+                                  }
+                                );
+                              }
+                              Answerpaper[index].optionsMark[j].optionMark =
+                                "mark";
                             }}
                           />
                           <label htmlFor={option.optionText}>
@@ -72,9 +87,16 @@ const QuestionPaper = ({ questionPaper }) => {
                             value={option.optionText}
                             id={option.optionText}
                             onChange={(e) => {
-                              pushIntoCheckbox(e.target.value);
+                              if (
+                                Answerpaper[index].optionsMark[j].optionMark ==
+                                "unmark"
+                              )
+                                Answerpaper[index].optionsMark[j].optionMark =
+                                  "mark";
+                              else
+                                Answerpaper[index].optionsMark[j].optionMark =
+                                  "unmark";
                             }}
-                            checked={checkbox.includes(option.optionText)}
                           />
                           <label htmlFor={option.optionText}>
                             <input
@@ -91,9 +113,9 @@ const QuestionPaper = ({ questionPaper }) => {
                       className="checkbox_item"
                       placeholder={"Write here..."}
                       type="text"
-                      value={text}
                       onChange={(e) => {
-                        setText(e.target.value);
+                        Answerpaper[index].optionsMark[0].optionMark =
+                          e.target.value;
                       }}
                     />
                   )}
@@ -104,7 +126,11 @@ const QuestionPaper = ({ questionPaper }) => {
         ))}
       </div>
       <div className="submitAnswerPaper_button">
-        <button onClick={SubmitTheQuestionPaper} className="submitPaper">
+        <button
+          disabled={user.reloadUserInfo.localId == questionPaper.ownerId}
+          onClick={SubmitTheQuestionPaper}
+          className="submitPaper"
+        >
           submit it
         </button>
       </div>

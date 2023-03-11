@@ -47,7 +47,7 @@ const AddEachQuestionFormClosed = ({
       }}
     >
       <div className="QuestionAsked_OnClosed">
-        {i+1}
+        {i + 1}
         {"."}
         {question.questionText}
       </div>
@@ -61,7 +61,7 @@ const AddEachQuestionFormClosed = ({
                     <input
                       className="checkbox_box"
                       type={question.questionType}
-                      name="Each_Option"
+                      name={i}
                       value={option.optionText}
                       id={option.optionText}
                     />
@@ -79,7 +79,7 @@ const AddEachQuestionFormClosed = ({
                     <input
                       className="checkbox_box"
                       type={question.questionType}
-                      name="Each_Option"
+                      name={i}
                       value={option.optionText}
                       id={option.optionText}
                     />

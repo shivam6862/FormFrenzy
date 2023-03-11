@@ -6,7 +6,7 @@ module.exports = insertQuestionpaper = async (QuestionPaper, ownerId) => {
   const Id_name = uuid();
 
   var AllQuestion = [];
-  console.log(QuestionPaper.DataSendToTheBackend.length);
+
   for (var i = 0; i < QuestionPaper.DataSendToTheBackend.length - 2; i++) {
     AllQuestion.push(QuestionPaper.DataSendToTheBackend[i]);
   }

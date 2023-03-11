@@ -6,8 +6,18 @@ const createConversationRoute = require("./routesForConversation/createConversat
 
 const getMyPapersRoute = require("./routesForHomePage/getMyPapersRoute");
 const getSharedPapersRoute = require("./routesForHomePage/getSharedPapersRoute");
-const getPaperRoute = require("./routesForHomePage/getPaperRoute");
+const getPaperRouteroutesForHomePage = require("./routesForHomePage/getPaperRoute");
 const shareWithEmailRoute = require("./routesForHomePage/shareWithEmailRoute");
+
+const acceptRequestRoute = require("./routesRequest/acceptRequestRoute");
+const rejectRequestRoute = require("./routesRequest/rejectRequestRoute");
+const createRequestRoute = require("./routesRequest/createRequestRoute");
+const getPaperRouteroutesRequest = require("./routesRequest/getPaperRoutes");
+
+const addAnswerPaper = require("./addAnswepaperRoute");
+
+const getAllResultsForUserRoute = require("./getAllResultsForUserRoute");
+const getResultForUserRoute = require("./getResultForUserRoute");
 
 module.exports = routes = [
   addQuestionPaper,
@@ -16,6 +26,13 @@ module.exports = routes = [
   createConversationRoute,
   getMyPapersRoute,
   getSharedPapersRoute,
-  getPaperRoute,
+  getPaperRouteroutesForHomePage,
   shareWithEmailRoute,
+  acceptRequestRoute,
+  rejectRequestRoute,
+  createRequestRoute,
+  getPaperRouteroutesRequest,
+  addAnswerPaper,
+  getAllResultsForUserRoute,
+  getResultForUserRoute,
 ];

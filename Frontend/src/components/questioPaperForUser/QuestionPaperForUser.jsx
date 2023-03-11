@@ -10,6 +10,9 @@ import SharedEmailsList from "../homePage/SharedEmailsList";
 import { useUser } from "../auth/useUser";
 import { postWithCredentials } from "../data/postWithCredentials";
 
+import RequestToJoin from "../requestToJoin/RequestToJoin";
+import PaperAcceptOrRejectPage from "../requestToJoin/PaperAcceptOrRejectPage";
+
 const QuestionPaperForUser = () => {
   const { id } = useParams();
   const { isLoading: isLoadingUsers, data: questionPaper } =
@@ -18,6 +21,22 @@ const QuestionPaperForUser = () => {
       null
     );
   console.log(questionPaper);
+
+  const Answerpaper = [];
+  if (questionPaper != null) {
+    questionPaper.AllQuestion.map((question, index) => {
+      const AnswerBody = {
+        questionType: "radio",
+        optionsMark: [{ optionMark: "unmark" }],
+      };
+      AnswerBody.questionType = question.questionType;
+      for (var i = 0; i < question.options.length - 1; i++) {
+        AnswerBody.optionsMark.push({ optionMark: "unmark" });
+      }
+      Answerpaper.push(AnswerBody);
+    });
+    console.log(Answerpaper);
+  }
 
   const { user } = useUser();
   const {
@@ -43,11 +62,29 @@ const QuestionPaperForUser = () => {
       {!isLoadingUsers && !isLoading ? (
         <div className="QuestionPaper-for-user-three-part">
           <div className="QuestionPaper-for-user-second-part">
-            <ConversationsListPage />
-            <NewConversationPage />
+            {questionPaper.message == "User is not allowed to get paper!" ? (
+              <div className="header_QuestionPaperQuestion">
+                <RequestToJoin />
+              </div>
+            ) : (
+              <div>
+                <ConversationsListPage />
+                <NewConversationPage />
+                <PaperAcceptOrRejectPage />
+              </div>
+            )}
           </div>
           <div className="QuestionPaper-for-user-one-part">
-            <QuestionPaper questionPaper={questionPaper} />
+            {questionPaper.message == "User is not allowed to get paper!" ? (
+              <div className="header_QuestionPaperQuestion">
+                {user.email} {"is not allowed to get paper!"}
+              </div>
+            ) : (
+              <QuestionPaper
+                questionPaper={questionPaper}
+                Answerpaper={Answerpaper}
+              />
+            )}
             <div>
               {userIsOwner && (
                 <SharedEmailsList

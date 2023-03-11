@@ -5,10 +5,6 @@ import AllOptionButton from "./AllOptionButton";
 const AddEachQuestionFormOpen = ({
   questions,
   i,
-  setRadio,
-  pushIntoCheckbox,
-  radio,
-  checkbox,
   addOptionsToEachQuestion,
   copyTheQuestion,
   deleteTheQuestion,
@@ -85,13 +81,17 @@ const AddEachQuestionFormOpen = ({
                       disabled
                       className="checkbox_box"
                       type={question.questionType}
-                      name="Each_Option"
+                      name={i}
                       value={option.optionText}
                       id={option.optionText}
-                      checked={radio === option.optionText}
-                      onChange={(e) => {
+                      onClick={(e) => {
                         console.log(e.target.value);
-                        setRadio(e.target.value);
+                        {
+                          questions[i].answerKey.map((answerk, k) => {
+                            questions[i].answerKey[k].optionMark = "unmark";
+                          });
+                        }
+                        questions[i].answerKey[j].optionMark = "mark";
                       }}
                     />
                     <label htmlFor={option.optionText}>
@@ -115,10 +115,7 @@ const AddEachQuestionFormOpen = ({
                       name="Each_Option"
                       value={option.optionText}
                       id={option.optionText}
-                      onChange={(e) => {
-                        pushIntoCheckbox(e.target.value);
-                      }}
-                      checked={checkbox.includes(option.optionText)}
+                      onChange={(e) => {}}
                     />
                     <label htmlFor={option.optionText}>
                       <input

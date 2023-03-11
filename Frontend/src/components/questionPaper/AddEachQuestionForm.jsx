@@ -5,10 +5,6 @@ import AddEachQuestionFormClosed from "./AddEachQuestionFormClosed";
 const AddEachQuestionForm = ({
   questions,
   i,
-  setRadio,
-  pushIntoCheckbox,
-  radio,
-  checkbox,
   addOptionsToEachQuestion,
   copyTheQuestion,
   deleteTheQuestion,
@@ -27,10 +23,6 @@ const AddEachQuestionForm = ({
         <AddEachQuestionFormOpen
           questions={questions}
           i={i}
-          setRadio={setRadio}
-          pushIntoCheckbox={pushIntoCheckbox}
-          radio={radio}
-          checkbox={checkbox}
           addOptionsToEachQuestion={addOptionsToEachQuestion}
           copyTheQuestion={copyTheQuestion}
           deleteTheQuestion={deleteTheQuestion}

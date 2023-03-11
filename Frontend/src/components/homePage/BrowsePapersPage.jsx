@@ -1,6 +1,7 @@
 import { useProtectedResources } from "../data/useProtectedResources";
 import MyPapersList from "./PapersList";
 import PapersList from "./PapersList";
+import AllResultOfUser from "../result/AllResultOfUser";
 
 const BrowsePapersPage = () => {
   const { isLoading: isLoadingMyPapers, data: myPapers } =
@@ -29,6 +30,7 @@ const BrowsePapersPage = () => {
         papers={sharedPapers}
         showNewButton={false}
       />
+      <AllResultOfUser />
     </div>
   );
 };

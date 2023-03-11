@@ -7,6 +7,7 @@ import CreatePaperForExam from "./components/createPaperForExam/CreatePaperForEx
 import QuestionPaperForUser from "./components/questioPaperForUser/QuestionPaperForUser";
 import Pagenotfound from "./components/pageNotFound/Pagenotfound";
 import ConversationPage from "./components/conversations/ConversationPage";
+import ResultOfUser from "./components/result/ResultOfUser";
 
 const routes = [
   {
@@ -33,6 +34,12 @@ const routes = [
     path: "/questionpaper/:id",
     exact: true,
     Component: QuestionPaperForUser,
+    private: true,
+  },
+  {
+    path: "/result/:id",
+    exact: true,
+    Component: ResultOfUser,
     private: true,
   },
   {

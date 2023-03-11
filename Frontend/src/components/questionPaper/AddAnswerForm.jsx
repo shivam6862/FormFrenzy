@@ -1,24 +1,16 @@
 import React from "react";
 
-const AddAnswerForm = ({
-  questions,
-  i,
-  doneAnswer,
-  OptionPoints,
-  OptionAnswer,
-  setRadio,
-  pushIntoAnswerCheckbox,
-  pushIntoCheckbox,
-  radio,
-  checkbox,
-}) => {
+const AddAnswerForm = ({ questions, i, doneAnswer, OptionPoints }) => {
   console.log(questions);
   console.log(i);
   const question = questions[i];
   return (
-    <div key={i} className={questions[i].open ? "each_question" : "each_question_closed"}>
+    <div
+      key={i}
+      className={questions[i].open ? "each_question" : "each_question_closed"}
+    >
       <div className="header_QuestionPaperEachQuestion">
-        Choose correct answer
+        Select correct answer
       </div>
       <div className="options" key={i}>
         <div
@@ -57,14 +49,18 @@ const AddAnswerForm = ({
                     <input
                       className="checkbox_box"
                       type={question.questionType}
-                      name="Each_Option"
+                      name={i}
                       value={option.optionText}
                       id={option.optionText}
-                      checked={radio === option.optionText}
-                      onChange={(e) => {
+                      onClick={(e) => {
                         console.log(e.target.value);
-                        setRadio(e.target.value);
-                        OptionAnswer(e.target.value, i);
+                        {
+                          questions[i].answerKey.map((answerk, k) => {
+                            if (k != j)
+                              questions[i].answerKey[k].optionMark = "unmark";
+                          });
+                        }
+                        questions[i].answerKey[j].optionMark = "mark";
                       }}
                     />
                     <label htmlFor={option.optionText}>
@@ -81,14 +77,16 @@ const AddAnswerForm = ({
                     <input
                       className="checkbox_box"
                       type={question.questionType}
-                      name="Each_Option"
+                      name={i}
                       value={option.optionText}
                       id={option.optionText}
                       onChange={(e) => {
-                        pushIntoAnswerCheckbox(e.target.value, i);
-                        pushIntoCheckbox(e.target.value);
+                        if (questions[i].answerKey[j].optionMark == "unmark") {
+                          questions[i].answerKey[j].optionMark = "mark";
+                        } else {
+                          questions[i].answerKey[j].optionMark = "unmark";
+                        }
                       }}
-                      checked={checkbox.includes(option.optionText)}
                     />
                     <label htmlFor={option.optionText}>
                       <input

@@ -19,6 +19,11 @@ const addAnswerPaper = require("./addAnswepaperRoute");
 const getAllResultsForUserRoute = require("./getAllResultsForUserRoute");
 const getResultForUserRoute = require("./getResultForUserRoute");
 
+const getAllResultsForPaperRoute = require("./getAllResultsForPaper");
+const getAllResultsForPaperRefreshRoute = require("./getAllResultsForPaperRefreshRoute");
+
+const getEmailUidRoute = require("./getEmailUidRoute");
+
 module.exports = routes = [
   addQuestionPaper,
   getUserConversationsRoute,
@@ -35,4 +40,7 @@ module.exports = routes = [
   addAnswerPaper,
   getAllResultsForUserRoute,
   getResultForUserRoute,
+  getAllResultsForPaperRoute,
+  getAllResultsForPaperRefreshRoute,
+  getEmailUidRoute,
 ];

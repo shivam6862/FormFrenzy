@@ -19,14 +19,16 @@ const NavBar = ({ user }) => {
       <div className="sing-in-out-box">
         {user ? (
           <>
-            <p className="logged-in-as space-before">
-              Email Id : {user.email}
-            </p>
+            <p className="logged-in-as space-before">Email Id : {user.email}</p>
             <button className="sign-out-button" onClick={onClickSignOut}>
               Sign Out
             </button>
           </>
-        ) : null}
+        ) : (
+          <Link to="/sign-up">
+            <button className="sign-out-button">Sign Up</button>
+          </Link>
+        )}
       </div>
     </nav>
   );

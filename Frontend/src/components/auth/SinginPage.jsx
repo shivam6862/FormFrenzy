@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useUser } from "../auth/useUser";
+
 const SigninPage = () => {
+  const { isLoading, user } = useUser();
+  const navigate = useNavigate();
+  {
+    user ? navigate("/") : null;
+  }
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [signInError, setSignInError] = useState("");
-  const navigate = useNavigate();
   const auth = getAuth();
 
   const onClickSignIn = async () => {

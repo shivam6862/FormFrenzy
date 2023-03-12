@@ -528,6 +528,7 @@ nav {
   border: 2px solid rgb(255, 255, 255);
   padding: 2rem 3.5rem;
   border-radius: 8px;
+  margin-bottom: 1rem;
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
     rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
     rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
@@ -855,6 +856,7 @@ button:disabled {
   display: flex;
   flex-grow: 1;
   flex-wrap: wrap;
+  gap: 1rem;
   min-height: 125px;
 }
 
@@ -904,4 +906,29 @@ button:disabled {
   padding: 1rem;
   border-radius: 0px 0px 8px 8px;
   margin: 0.2rem 0rem;
+}
+
+.results-list-result-each-paper {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-list-item-each-paper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  white-space: nowrap;
+  gap: 0.25rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  -moz-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  background-color: white;
+  color: black;
+  font-size: 24px;
+  border-radius: 16px;
+  padding: 0.1rem 0.5rem;
+  margin-top: 1.5rem;
 }

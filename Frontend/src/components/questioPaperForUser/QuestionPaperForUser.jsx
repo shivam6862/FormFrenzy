@@ -13,6 +13,8 @@ import { postWithCredentials } from "../data/postWithCredentials";
 import RequestToJoin from "../requestToJoin/RequestToJoin";
 import PaperAcceptOrRejectPage from "../requestToJoin/PaperAcceptOrRejectPage";
 
+import AllStudentMarksForEachPaper from "../result/AllStudentMarksForEachPaper";
+
 const QuestionPaperForUser = () => {
   const { id } = useParams();
   const { isLoading: isLoadingUsers, data: questionPaper } =
@@ -23,7 +25,10 @@ const QuestionPaperForUser = () => {
   console.log(questionPaper);
 
   const Answerpaper = [];
-  if (questionPaper != null) {
+  if (
+    questionPaper != null &&
+    questionPaper.message != "User is not allowed to get paper!"
+  ) {
     questionPaper.AllQuestion.map((question, index) => {
       const AnswerBody = {
         questionType: "radio",
@@ -71,6 +76,7 @@ const QuestionPaperForUser = () => {
                 <ConversationsListPage />
                 <NewConversationPage />
                 <PaperAcceptOrRejectPage />
+                <AllStudentMarksForEachPaper />
               </div>
             )}
           </div>

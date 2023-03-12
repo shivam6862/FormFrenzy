@@ -8,6 +8,7 @@ import QuestionPaperForUser from "./components/questioPaperForUser/QuestionPaper
 import Pagenotfound from "./components/pageNotFound/Pagenotfound";
 import ConversationPage from "./components/conversations/ConversationPage";
 import ResultOfUser from "./components/result/ResultOfUser";
+import SingupPage from "./components/auth/SignupPage";
 
 const routes = [
   {
@@ -18,6 +19,10 @@ const routes = [
   {
     path: "/sign-in",
     Component: SigninPage,
+  },
+  {
+    path: "/sign-up",
+    Component: SingupPage,
   },
   {
     path: "/",

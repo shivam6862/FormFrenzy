@@ -14,7 +14,9 @@ const ResultOfUser = () => {
 
   return (
     <div>
-      <h2 className="result-list-item result-list-item-heading">Description Result of User</h2>
+      <h2 className="result-list-item result-list-item-heading">
+        Description of Result
+      </h2>
       {isLoadingMyResult ? (
         <LoadingSpinner />
       ) : (

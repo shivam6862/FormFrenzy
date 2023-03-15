@@ -8,7 +8,6 @@ const ConversationsListPage = () => {
     `${import.meta.env.VITE_REACT_BACKEND_URL}/users/${user.uid}/conversations`,
     []
   );
-  // conversation data contain complete data of converstion
 
   return isLoading ? (
     <p>Loading messages...</p>

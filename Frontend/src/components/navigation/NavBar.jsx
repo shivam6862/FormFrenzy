@@ -18,12 +18,12 @@ const NavBar = ({ user }) => {
       </div>
       <div className="sing-in-out-box">
         {user ? (
-          <>
+          <div className="username-sign-out-navbar">
             <p className="logged-in-as space-before">Email Id : {user.email}</p>
             <button className="sign-out-button" onClick={onClickSignOut}>
               Sign Out
             </button>
-          </>
+          </div>
         ) : (
           <Link to="/sign-up">
             <button className="sign-out-button">Sign Up</button>

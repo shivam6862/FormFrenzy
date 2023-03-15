@@ -232,6 +232,7 @@ nav {
   flex-direction: column;
   padding-bottom: 2rem;
   padding-left: 1rem;
+  padding-right: 1rem;
   border-radius: 8px;
 }
 
@@ -260,6 +261,7 @@ nav {
 
 .checkbox {
   display: flex;
+  align-items: center;
 }
 
 .checkbox_box {
@@ -276,6 +278,7 @@ nav {
   padding-top: 1rem;
   border-bottom: 2px solid rgb(255, 255, 255);
   border-top: 2px solid rgb(255, 255, 255);
+  border-radius: 8px;
 }
 
 .each_question_closed {
@@ -284,6 +287,11 @@ nav {
   padding-top: 0.65rem;
   border-bottom: 2px solid rgb(255, 255, 255);
   border-top: 2px solid rgb(255, 255, 255);
+  border-left: 2px solid rgb(255, 255, 255);
+  border-radius: 8px;
+  border-right: 2px solid rgb(255, 255, 255);
+  background-color: #c9c0c0;
+  margin-bottom: 1rem;
 }
 
 .options {
@@ -462,6 +470,7 @@ nav {
   border-radius: 8px;
   color: white;
   cursor: pointer;
+  height: 45px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -660,6 +669,8 @@ button:disabled {
     rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
     rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
     rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  max-height: 60vh;
+  overflow-y: scroll;
 }
 .centered-container-conversation-each {
   max-width: 550px;
@@ -931,4 +942,164 @@ button:disabled {
   border-radius: 16px;
   padding: 0.1rem 0.5rem;
   margin-top: 1.5rem;
+}
+
+.username-sign-out-navbar {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.username-sign-out-navbar p {
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 650px) {
+  .centered-container {
+    min-width: 300px;
+  }
+  .centered-container-conversation-each {
+    margin: 0.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .QuestionPaper-for-user-three-part {
+    flex-direction: column-reverse;
+  }
+  .QuestionPaper-for-user-second-part {
+    width: 100%;
+  }
+
+  .QuestionPaper-for-user-one-part {
+    margin-right: 1rem;
+    width: 100%;
+  }
+  .centered-container-conversation {
+    max-width: 100vw;
+  }
+  .centered-container-accept-reject {
+    min-width: auto;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .options button {
+    font-size: 14px;
+  }
+  .options {
+    gap: 0.1rem;
+    flex-wrap: wrap;
+    padding-right: 0.1rem;
+    margin-bottom: 0.4rem;
+  }
+}
+
+@media (max-width: 530px) {
+  .result-list-item {
+    padding: 0.5rem;
+    font-size: 20px;
+  }
+  .removeOption button {
+    margin-left: 1rem;
+    padding: 0.2rem;
+    font-size: 13px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .header_QuestionPaperQuestion {
+    font-size: 20px;
+  }
+  .QuestionAsked_OnClosed {
+    font-size: 16px;
+  }
+  input {
+    font-size: 13px;
+  }
+  .points {
+    font-size: 13px;
+  }
+  .centered-container-accept-reject {
+    min-width: auto;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .header_NavBars {
+    gap: 0.01rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .centered-container {
+    min-width: 200px;
+  }
+  .centered-container-conversation h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 30px;
+    padding-bottom: 1rem;
+  }
+  .centered-container-conversation h3 {
+    padding: 0;
+    margin: 0;
+    font-size: 25px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .centered-container-conversation p {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    padding-bottom: 0.5rem;
+  }
+  .centered-container-conversation .conversation-button {
+    font-size: 14px;
+  }
+  .centered-container-conversation button:disabled {
+    font-size: 14px;
+    padding: 8px;
+  }
+  .results-list-result-each-paper div {
+    font-size: 20px;
+  }
+  .removeOption button {
+    margin-left: 0.5rem;
+    padding: 0.2rem;
+    font-size: 11px;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .header_NavBars {
+    gap: 0.01rem;
+  }
+  .username-sign-out-navbar p {
+    display: none;
+  }
+  .papers-list-item-wrap {
+    width: auto;
+  }
+  .result-list-item {
+    font-size: 16px;
+    padding: 0.1rem;
+  }
+  .results-list-result-each-paper div {
+    font-size: 16px;
+  }
+  .new-conversation-list-item p {
+    font-size: 16px;
+  }
 }

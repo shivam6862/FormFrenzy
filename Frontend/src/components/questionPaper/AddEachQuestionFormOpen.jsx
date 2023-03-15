@@ -85,7 +85,6 @@ const AddEachQuestionFormOpen = ({
                       value={option.optionText}
                       id={option.optionText}
                       onClick={(e) => {
-                        console.log(e.target.value);
                         {
                           questions[i].answerKey.map((answerk, k) => {
                             questions[i].answerKey[k].optionMark = "unmark";

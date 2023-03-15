@@ -15,6 +15,24 @@ const SigninPage = () => {
   const auth = getAuth();
 
   const onClickSignIn = async () => {
+    var validEmail =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (emailValue.trim() == "" || passwordValue.trim() == "") {
+      setSignInError("Fill the email and password..");
+      return;
+    }
+    if (emailValue.match(validEmail)) {
+      setSignInError("");
+    } else {
+      setSignInError("Fill the correct email..");
+      return;
+    }
+    if (passwordValue.length < 6) {
+      setSignInError("Password length is small...");
+      return;
+    }
+    setSignInError("");
+
     try {
       setSignInError("");
       await signInWithEmailAndPassword(auth, emailValue, passwordValue);

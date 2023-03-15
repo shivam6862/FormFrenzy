@@ -179,7 +179,7 @@ const QuestionForm = () => {
     if (questions.length == 0) return "Question to be Create !";
 
     return questions.map((question, i) => (
-      <div key={i * 100}>
+      <div key={i}>
         {!questions[i].answer ? (
           <AddEachQuestionForm
             questions={questions}

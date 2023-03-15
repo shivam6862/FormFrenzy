@@ -37,7 +37,6 @@ const SingupPage = () => {
     }
     setSignUpError("");
     setRegister(true);
-    console.log(emailValue, passwordValue);
 
     try {
       setSignUpError("");
@@ -49,7 +48,6 @@ const SingupPage = () => {
 
       const firebaseEmail = response.user.email;
       const firebaseUid = response.user.uid;
-      console.log(firebaseEmail, firebaseUid);
 
       const EmailAndUidOfFirebaseSavedToBackend = await postWithCredentials(
         `${import.meta.env.VITE_REACT_BACKEND_URL}/emailuid`,
@@ -57,7 +55,6 @@ const SingupPage = () => {
       );
       const EmailAndUidOfFirebaseSavedToBackendResponse =
         await EmailAndUidOfFirebaseSavedToBackend.json();
-      console.log(EmailAndUidOfFirebaseSavedToBackendResponse);
 
       setRegister(false);
       navigate("/");

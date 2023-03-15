@@ -2,7 +2,6 @@ import React from "react";
 
 const AddAnswerForm = ({ questions, i, doneAnswer, OptionPoints }) => {
   console.log(questions);
-  console.log(i);
   const question = questions[i];
   return (
     <div
@@ -29,7 +28,6 @@ const AddAnswerForm = ({ questions, i, doneAnswer, OptionPoints }) => {
           value={questions[i].points}
           id={i}
           onChange={(e) => {
-            console.log(e.target.value);
             OptionPoints(e.target.value, i);
           }}
         />
@@ -53,7 +51,6 @@ const AddAnswerForm = ({ questions, i, doneAnswer, OptionPoints }) => {
                       value={option.optionText}
                       id={option.optionText}
                       onClick={(e) => {
-                        console.log(e.target.value);
                         {
                           questions[i].answerKey.map((answerk, k) => {
                             if (k != j)

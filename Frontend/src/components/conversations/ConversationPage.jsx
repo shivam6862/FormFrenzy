@@ -60,8 +60,6 @@ const ConversationPage = () => {
     // return () => socket.disconnect();
   }, []);
 
-  // className={`${list-item} ${left}`}
-
   return (
     <div>
       <button
@@ -76,7 +74,6 @@ const ConversationPage = () => {
             if (message.postedBy.email == user.email) {
               return (
                 <div key={message._id} className="list-item right">
-                  {/* <h3>{message.postedBy.name}</h3> */}
                   <h3>You</h3>
                   <p>{message.text}</p>
                 </div>

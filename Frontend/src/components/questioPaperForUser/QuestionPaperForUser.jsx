@@ -15,7 +15,14 @@ import PaperAcceptOrRejectPage from "../requestToJoin/PaperAcceptOrRejectPage";
 
 import AllStudentMarksForEachPaper from "../result/AllStudentMarksForEachPaper";
 
+import AsktoEnter from "./AsktoEnter";
+
 const QuestionPaperForUser = () => {
+  const [confirmEnter, setConfirmEnter] = useState(false);
+  const [currentTimeToStart, setCurrentTimeToStart] = useState("");
+  const [dateuserEnter, setDateuserEnter] = useState(0);
+  console.log(confirmEnter);
+
   const { id } = useParams();
   const { isLoading: isLoadingUsers, data: questionPaper } =
     useProtectedResources(
@@ -62,47 +69,93 @@ const QuestionPaperForUser = () => {
     setPaper(updatedPaper);
   };
 
+  useEffect(() => {
+    window.addEventListener("beforeunload", warning);
+    function warning(e) {
+      e.returnValue = "";
+    }
+    return () => {
+      console.log("ok");
+      window.removeEventListener("beforeunload", warning);
+    };
+  }, []);
+
+  var [index, setIndex] = useState(0);
+  useEffect(() => {
+    const goenTime = dateuserEnter - currentTimeToStart;
+    if (
+      questionPaper != null &&
+      questionPaper.message != "User is not allowed to get paper!"
+    ) {
+      const timeToPut = +questionPaper.time.time * 60 - goenTime;
+      if (index < 0) setIndex(timeToPut);
+    }
+    if (index > 0) {
+      setTimeout(() => {
+        setIndex(--index);
+      }, 1000);
+    }
+  }, [index, currentTimeToStart, dateuserEnter]);
+
   return (
     <div className="AnswerPaper_box">
       {!isLoadingUsers && !isLoading ? (
-        <div className="QuestionPaper-for-user-three-part">
-          <div className="QuestionPaper-for-user-second-part">
-            {questionPaper.message == "User is not allowed to get paper!" ? (
-              <div className="header_QuestionPaperQuestion">
-                <RequestToJoin />
+        <>
+          {!confirmEnter ? (
+            <AsktoEnter
+              setConfirmEnter={setConfirmEnter}
+              questionPaper={questionPaper}
+              setCurrentTimeToStart={setCurrentTimeToStart}
+              setDateuserEnter={setDateuserEnter}
+            />
+          ) : (
+            <div className="QuestionPaper-for-user-three-part">
+              <div className="QuestionPaper-for-user-second-part">
+                {questionPaper.message ==
+                "User is not allowed to get paper!" ? (
+                  <div className="header_QuestionPaperQuestion">
+                    <RequestToJoin />
+                  </div>
+                ) : (
+                  <div>
+                    <div className="CurrentTimeToStart">
+                      Time Started : {index} sec
+                    </div>
+                    <ConversationsListPage />
+                    <NewConversationPage />
+                    <PaperAcceptOrRejectPage />
+                    <AllStudentMarksForEachPaper />
+                  </div>
+                )}
               </div>
-            ) : (
-              <div>
-                <ConversationsListPage />
-                <NewConversationPage />
-                <PaperAcceptOrRejectPage />
-                <AllStudentMarksForEachPaper />
+              <div className="QuestionPaper-for-user-one-part">
+                {questionPaper.message ==
+                "User is not allowed to get paper!" ? (
+                  <div className="header_QuestionPaperQuestion">
+                    {user.email} {"is not allowed to get paper!"}
+                  </div>
+                ) : (
+                  <QuestionPaper
+                    questionPaper={questionPaper}
+                    Answerpaper={Answerpaper}
+                  />
+                )}
+                <div>
+                  {userIsOwner && (
+                    <SharedEmailsList
+                      emails={paper.sharedWithEmails}
+                      onShare={shareWithEmail}
+                    />
+                  )}
+                </div>
               </div>
-            )}
-          </div>
-          <div className="QuestionPaper-for-user-one-part">
-            {questionPaper.message == "User is not allowed to get paper!" ? (
-              <div className="header_QuestionPaperQuestion">
-                {user.email} {"is not allowed to get paper!"}
-              </div>
-            ) : (
-              <QuestionPaper
-                questionPaper={questionPaper}
-                Answerpaper={Answerpaper}
-              />
-            )}
-            <div>
-              {userIsOwner && (
-                <SharedEmailsList
-                  emails={paper.sharedWithEmails}
-                  onShare={shareWithEmail}
-                />
-              )}
             </div>
-          </div>
-        </div>
+          )}
+        </>
       ) : (
-        <LoadingSpinner />
+        <>
+          <LoadingSpinner />
+        </>
       )}
     </div>
   );

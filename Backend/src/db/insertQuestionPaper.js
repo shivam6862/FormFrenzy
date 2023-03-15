@@ -7,15 +7,19 @@ module.exports = insertQuestionpaper = async (QuestionPaper, ownerId) => {
 
   var AllQuestion = [];
 
-  for (var i = 0; i < QuestionPaper.DataSendToTheBackend.length - 2; i++) {
+  for (var i = 0; i < QuestionPaper.DataSendToTheBackend.length - 3; i++) {
     AllQuestion.push(QuestionPaper.DataSendToTheBackend[i]);
   }
 
   var untitledDocument =
     QuestionPaper.DataSendToTheBackend[
-      QuestionPaper.DataSendToTheBackend.length - 2
+      QuestionPaper.DataSendToTheBackend.length - 3
     ];
   var formDescription =
+    QuestionPaper.DataSendToTheBackend[
+      QuestionPaper.DataSendToTheBackend.length - 2
+    ];
+  var time =
     QuestionPaper.DataSendToTheBackend[
       QuestionPaper.DataSendToTheBackend.length - 1
     ];
@@ -25,6 +29,7 @@ module.exports = insertQuestionpaper = async (QuestionPaper, ownerId) => {
     .insertOne({
       id: Id_name,
       ownerId: ownerId,
+      time: time,
       untitledDocument: untitledDocument,
       formDescription: formDescription,
       AllQuestion: AllQuestion,

@@ -16,6 +16,7 @@ module.exports = getPaperRoute = {
     );
     if (userIsOwner) {
       const paper = await getPopulatedPaper(paperId);
+      console.log(paper);
       res.status(200).json(paper);
     } else if (PaperIsSharedWithUser) {
       const paper = await getSanitizedPaper(paperId);

@@ -24,6 +24,9 @@ const getAllResultsForPaperRefreshRoute = require("./getAllResultsForPaperRefres
 
 const getEmailUidRoute = require("./getEmailUidRoute");
 
+const addAsktoEnterInPaperRoute = require("./addAsktoEnterInPaperRoute");
+const getPaperDoneRoute = require("./getPaperDoneRoute");
+
 module.exports = routes = [
   addQuestionPaper,
   getUserConversationsRoute,
@@ -43,4 +46,6 @@ module.exports = routes = [
   getAllResultsForPaperRoute,
   getAllResultsForPaperRefreshRoute,
   getEmailUidRoute,
+  addAsktoEnterInPaperRoute,
+  getPaperDoneRoute,
 ];

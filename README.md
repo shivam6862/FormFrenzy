@@ -13,7 +13,7 @@ to compile the code.
 
 FormFrenzy is a complete form solutions enabling users to create forms, quizzes, etc for multiple users, and handle them efficiently by our site
 
-[Image](https://github.com/shivam6862/Quiz-App/blob/master/Frontend/public/QuizApp.png).
+![alt text](https://github.com/shivam6862/Quiz-App/blob/master/Frontend/public/QuizApp.png).
 
 
 ## Tools & languages:

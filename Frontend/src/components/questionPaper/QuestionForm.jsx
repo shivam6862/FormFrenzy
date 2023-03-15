@@ -28,7 +28,8 @@ const QuestionForm = () => {
   const [questions, setQuestions] = useState([]);
   const [untitledDocument, setUntitledDocument] = useState("");
   const [formDescription, setFormDescription] = useState("");
-
+  const [timeofTest, setTimeOfTest] = useState("");
+console.log(timeofTest);
   function changeQuestionText(text, i) {
     console.log(i);
     var newQuestion = [...questions];
@@ -114,6 +115,7 @@ const QuestionForm = () => {
     const DataSendToTheBackend = [...questions];
     DataSendToTheBackend.push({ untitledDocument: untitledDocument });
     DataSendToTheBackend.push({ formDescription: formDescription });
+    DataSendToTheBackend.push({ time: timeofTest });
     console.log(DataSendToTheBackend);
 
     const response = await postWithCredentials(
@@ -125,6 +127,7 @@ const QuestionForm = () => {
 
     setFormDescription("");
     setUntitledDocument("");
+    setTimeOfTest("");
     setQuestions([]);
     navigate(`/questionpaper/${newGroupId}`);
   };
@@ -235,6 +238,16 @@ const QuestionForm = () => {
         </div>
         <div className="question_section_questions">{questionsUI()}</div>
         <div className="add_Question_button">
+          <input
+            type="number"
+            name="Duration of test.."
+            className="question_section_part_Top_Desc_time"
+            placeholder="Duration of test in minutes.."
+            value={timeofTest}
+            onChange={(e) => {
+              setTimeOfTest(e.target.value);
+            }}
+          />
           <button onClick={createNewQuestion} className="addQuestion">
             Add question
           </button>

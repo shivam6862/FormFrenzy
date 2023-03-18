@@ -1,5 +1,4 @@
 Backend/node_modules
-Backend/src/credentials.json
 Backend/.env
 
 Frontend/node_modules

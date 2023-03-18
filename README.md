@@ -163,16 +163,15 @@ Use this space to list resources you find helpful and would like to give credit 
 
 - [GitHub Pages](https://pages.github.com)
 - [Font Awesome](https://fontawesome.com)
-- [MongoDb] (https://www.mongodb.com/)
-- [Firebase] (https://console.firebase.google.com/)
+- [MongoDb](https://www.mongodb.com/)
+- [Firebase](https://console.firebase.google.com/)
 
 * []() Finally, kudos to the team for the great work `shivam6862`
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [react-url]: https://reactjs.org/
 
-[NodeJs-url] : https://nodejs.org/en
-[Mongodb-url] :https://www.mongodb.com/
-[VisualStudioCode-url] : https://code.visualstudio.com/
-style=for-the-badge&logo=nextdotjs&logoColor=white
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[NodeJs-url]: https://nodejs.org/en
+[Mongodb-url]:https://www.mongodb.com/
+[VisualStudioCode-url]: https://code.visualstudio.com/

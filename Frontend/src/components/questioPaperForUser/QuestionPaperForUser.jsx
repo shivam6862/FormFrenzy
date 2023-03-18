@@ -21,7 +21,6 @@ const QuestionPaperForUser = () => {
   const [confirmEnter, setConfirmEnter] = useState(false);
   const [currentTimeToStart, setCurrentTimeToStart] = useState("");
   const [dateuserEnter, setDateuserEnter] = useState(0);
-  console.log(confirmEnter);
 
   const { id } = useParams();
   const { isLoading: isLoadingUsers, data: questionPaper } =
@@ -29,7 +28,6 @@ const QuestionPaperForUser = () => {
       `${import.meta.env.VITE_REACT_BACKEND_URL}/papers/${id}`,
       null
     );
-  console.log(questionPaper);
 
   const Answerpaper = [];
   if (
@@ -47,7 +45,6 @@ const QuestionPaperForUser = () => {
       }
       Answerpaper.push(AnswerBody);
     });
-    console.log(Answerpaper);
   }
 
   const { user } = useUser();
@@ -88,7 +85,7 @@ const QuestionPaperForUser = () => {
       questionPaper.message != "User is not allowed to get paper!"
     ) {
       const timeToPut = +questionPaper.time.time * 60 - goenTime;
-      if (index < 0) setIndex(timeToPut);
+      if (index <= 0) setIndex(timeToPut);
     }
     if (index > 0) {
       setTimeout(() => {

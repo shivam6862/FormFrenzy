@@ -226,7 +226,7 @@ nav {
   font-size: 19px;
   padding: 0.3rem;
 }
-.question_section_part_Top_Desc_time{
+.question_section_part_Top_Desc_time {
   width: auto;
   padding: 0.75rem;
   margin-left: 1rem;
@@ -296,6 +296,7 @@ nav {
   border-right: 2px solid rgb(255, 255, 255);
   background-color: #c9c0c0;
   margin-bottom: 1rem;
+  cursor: move;
 }
 
 .options {
@@ -310,6 +311,19 @@ nav {
 
 .options button {
   background-color: rgb(43, 103, 243);
+  padding: 0.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  -moz-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.options .optionsrequired {
+  background-color: rgb(243, 63, 43);
   padding: 0.2rem;
   border-radius: 5px;
   cursor: pointer;
@@ -997,6 +1011,9 @@ button:disabled {
   .options button {
     font-size: 14px;
   }
+  .options .optionsrequired {
+    font-size: 14px;
+  }
   .options {
     gap: 0.1rem;
     flex-wrap: wrap;
@@ -1017,7 +1034,7 @@ button:disabled {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-  .question_section_part_Top_Desc_time{
+  .question_section_part_Top_Desc_time {
     width: 20%;
   }
 }

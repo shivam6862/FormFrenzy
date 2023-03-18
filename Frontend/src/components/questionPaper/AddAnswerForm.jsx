@@ -1,7 +1,6 @@
 import React from "react";
 
 const AddAnswerForm = ({ questions, i, doneAnswer, OptionPoints }) => {
-  console.log(questions);
   const question = questions[i];
   return (
     <div

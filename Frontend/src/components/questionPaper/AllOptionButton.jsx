@@ -2,6 +2,7 @@ import React from "react";
 
 const AllOptionButton = ({
   i,
+  questions,
   addOptionsToEachQuestion,
   copyTheQuestion,
   deleteTheQuestion,
@@ -17,7 +18,11 @@ const AllOptionButton = ({
             addOptionsToEachQuestion(i);
           }}
         >
-          <button>Add options</button>
+          {questions[i].options.length <= 4 ? (
+            <button>Add options</button>
+          ) : (
+            <button disabled>Add options</button>
+          )}
         </div>
         <div
           onClick={() => {
@@ -38,7 +43,11 @@ const AllOptionButton = ({
             requiredQuestion(i);
           }}
         >
-          <button>required Question</button>
+          {questions[i].required ? (
+            <button className="optionsrequired">required Question</button>
+          ) : (
+            <button>required Question</button>
+          )}
         </div>
         <div
           onClick={() => {

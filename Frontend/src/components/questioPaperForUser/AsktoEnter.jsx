@@ -18,7 +18,6 @@ const AsktoEnter = ({
     `${import.meta.env.VITE_REACT_BACKEND_URL}/checkpaperdone/${id}`,
     null
   );
-  console.log(checkpaper);
 
   const openthebutton = async () => {
     const response = await postWithCredentials(
@@ -26,9 +25,6 @@ const AsktoEnter = ({
       { user }
     );
     const updatedPaper = await response.json();
-    console.log(updatedPaper);
-    console.log(updatedPaper);
-
     const date = new Date();
     const time =
       date.getDate() +
@@ -52,7 +48,6 @@ const AsktoEnter = ({
     setCurrentTimeToStart(seconds);
   };
 
-  console.log(questionPaper);
   return (
     <div className="backdrop">
       <div className="asktoenterbox">

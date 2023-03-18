@@ -8,21 +8,13 @@ const QuestionPaper = ({ questionPaper, Answerpaper }) => {
   const { user } = useUser();
   const { id } = useParams();
   const navigate = useNavigate();
-  
-  console.log(questionPaper.AllQuestion);
-  console.log(Answerpaper);
 
   const SubmitTheQuestionPaper = async () => {
-    console.log("Submitted the Answer!");
-    console.log(Answerpaper);
-
     const response = await postWithCredentials(
       `${import.meta.env.VITE_REACT_BACKEND_URL}/addanswerpaper/${id}`,
       { Answerpaper }
     );
     const newGroupId = await response.json();
-    console.log(newGroupId);
-
     navigate(`/`);
   };
 

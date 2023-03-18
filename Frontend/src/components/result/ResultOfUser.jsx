@@ -10,7 +10,6 @@ const ResultOfUser = () => {
       `${import.meta.env.VITE_REACT_BACKEND_URL}/result/${id}`,
       null
     );
-  console.log(myResult);
 
   return (
     <div>

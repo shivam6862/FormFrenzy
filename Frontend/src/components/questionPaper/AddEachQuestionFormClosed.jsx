@@ -17,13 +17,12 @@ const AddEachQuestionFormClosed = ({
   };
 
   const dragEnter = (e, position) => {
-    console.log(position);
     setDragOverItem(position);
   };
 
   const drop = (e) => {
     const copyQuestionItems = [...questions];
-    console.log(dragItem, dragOverItem);
+    console.log("drop", dragItem, dragOverItem);
     const dragOnItemContent = copyQuestionItems[dragItem];
     const dragOverItemContent = copyQuestionItems[dragOverItem];
     copyQuestionItems.splice(dragItem, 1, dragOverItemContent);
@@ -31,7 +30,6 @@ const AddEachQuestionFormClosed = ({
     setDragItem(null);
     setDragOverItem(null);
     setQuestions(copyQuestionItems);
-    console.log(copyQuestionItems);
   };
 
   return (
@@ -40,7 +38,7 @@ const AddEachQuestionFormClosed = ({
       className={questions[i].open ? "each_question" : "each_question_closed"}
       onDragStart={(e) => dragStart(e, i)}
       onDragEnter={(e) => dragEnter(e, i)}
-      // onDragEnd={drop}
+      onDragEnd={drop}
       draggable
       onClick={() => {
         handleExpand(i);

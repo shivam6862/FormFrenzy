@@ -41,7 +41,6 @@ const ConversationPage = () => {
 
       setSocket(socket);
       socket.on("messagesForYou", (conversation) => {
-        // conversation contain memberId , member name ,  meessage , name of group , _id
         setMessages(conversation.messages);
       });
       socket.on("messagesUpdated", (messages) => {
@@ -57,7 +56,6 @@ const ConversationPage = () => {
     if (user) {
       establishSocketConnection();
     }
-    // return () => socket.disconnect();
   }, []);
 
   return (

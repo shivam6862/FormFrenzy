@@ -14,7 +14,6 @@ export const DragAndDrop = ({ questions }) => {
 
   const drop = (e) => {
     const copyQuestionItems = questions;
-    console.log(1);
     const dragOnItemContent = copyQuestionItems[dragItem.current];
     const dragOverItemContent = copyQuestionItems[dragOverItem.current];
     copyQuestionItems.splice(dragItem.current, 1, dragOverItemContent);
@@ -23,7 +22,6 @@ export const DragAndDrop = ({ questions }) => {
     dragOverItem.current = null;
     // setQuestions = copyQuestionItems;
     // setQuestions(copyQuestionItems);
-    console.log(copyQuestionItems);
   };
 
   return { dragStart, dragEnter, drop };

@@ -29,36 +29,26 @@ const QuestionForm = () => {
   const [untitledDocument, setUntitledDocument] = useState("");
   const [formDescription, setFormDescription] = useState("");
   const [timeofTest, setTimeOfTest] = useState("");
-console.log(timeofTest);
   function changeQuestionText(text, i) {
-    console.log(i);
     var newQuestion = [...questions];
     newQuestion[i].questionText = text;
     setQuestions(newQuestion);
-    console.log(newQuestion);
   }
 
   function changeQuestionOption(text, i, j) {
-    console.log(i, j);
     var newQuestion = [...questions];
-    console.log(text);
     newQuestion[i].options[j].optionText = text;
     setQuestions(newQuestion);
-    console.log(newQuestion);
   }
 
   function changeQuestionType(type, i) {
-    console.log(type, i);
     var newQuestion = [...questions];
-    console.log(type);
     newQuestion[i].questionType = type;
     setQuestions(newQuestion);
-    console.log(newQuestion);
   }
 
   function createNewQuestion() {
     expandCloseAll();
-    console.log("New Question Created!");
     var previousAllQuestion = [...questions];
     previousAllQuestion.push(newQuestion);
     setQuestions(previousAllQuestion);
@@ -74,7 +64,6 @@ console.log(timeofTest);
   function requiredQuestion(i) {
     var requireQuestionPart = [...questions];
     requireQuestionPart[i].required = !requireQuestionPart[i].required;
-    console.log(requireQuestionPart[i]);
     setQuestions(requireQuestionPart);
   }
 
@@ -87,14 +76,11 @@ console.log(timeofTest);
   }
 
   function addOptionsToEachQuestion(i) {
-    console.log("option created for question number", i);
     var optionsOfQuestion = [...questions];
     if (optionsOfQuestion[i].options.length < 5) {
       optionsOfQuestion[i].options.push({
         optionText: "Option " + (optionsOfQuestion[i].options.length + 1),
       });
-    } else {
-      console.log("Maximum option is 5!");
     }
     setQuestions(optionsOfQuestion);
   }
@@ -102,28 +88,22 @@ console.log(timeofTest);
   function RemoveOptionsToEachQuestion(i, j) {
     var removeOptioninEachQuestion = [...questions];
     if (removeOptioninEachQuestion[i].options.length > 1) {
-      console.log(
-        removeOptioninEachQuestion[i].options[j].optionText + i + "->" + j
-      );
       removeOptioninEachQuestion[i].options.splice(j, 1);
       setQuestions(removeOptioninEachQuestion);
     }
   }
 
   const SubmitTheQuestionPaper = async () => {
-    console.log("Submitted the Question!");
     const DataSendToTheBackend = [...questions];
     DataSendToTheBackend.push({ untitledDocument: untitledDocument });
     DataSendToTheBackend.push({ formDescription: formDescription });
     DataSendToTheBackend.push({ time: timeofTest });
-    console.log(DataSendToTheBackend);
 
     const response = await postWithCredentials(
       `${import.meta.env.VITE_REACT_BACKEND_URL}/addQuestionPaper`,
       { DataSendToTheBackend }
     );
     const newGroupId = await response.json();
-    console.log(newGroupId);
 
     setFormDescription("");
     setUntitledDocument("");
@@ -133,7 +113,6 @@ console.log(timeofTest);
   };
 
   function expandCloseAll() {
-    console.log("expandClosedAll active");
     let allQuestionSet = [...questions];
     for (let i = 0; i < allQuestionSet.length; i++) {
       allQuestionSet[i].open = false;
@@ -150,24 +129,18 @@ console.log(timeofTest);
         IthQuestionExpand[i].open = false;
       }
     }
-    console.log(place);
     setQuestions(IthQuestionExpand);
   }
 
   function OptionPoints(points, questionNumber) {
-    console.log(questionNumber + "->" + points);
     var OptionPOintsOfQuestion = [...questions];
     OptionPOintsOfQuestion[questionNumber].points = points;
     setQuestions(OptionPOintsOfQuestion);
-    console.log(OptionPOintsOfQuestion);
   }
 
   function doneAnswer(i) {
-    console.log(i);
     var DoneAnswerOfQuestion = [...questions];
     DoneAnswerOfQuestion[i].answer = !DoneAnswerOfQuestion[i].answer;
-    console.log("add answer", i, DoneAnswerOfQuestion[i].answer);
-    console.log(DoneAnswerOfQuestion);
     setQuestions(DoneAnswerOfQuestion);
   }
 
@@ -175,7 +148,6 @@ console.log(timeofTest);
     var AddAnswerOfQuestion = [...questions];
     AddAnswerOfQuestion[i].answer = !AddAnswerOfQuestion[i].answer;
     setQuestions(AddAnswerOfQuestion);
-    console.log(AddAnswerOfQuestion);
   }
 
   function questionsUI() {

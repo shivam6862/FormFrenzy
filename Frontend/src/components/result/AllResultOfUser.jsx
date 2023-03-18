@@ -8,7 +8,6 @@ const AllResultOfUser = () => {
       `${import.meta.env.VITE_REACT_BACKEND_URL}/results/`,
       null
     );
-  console.log(myResults);
 
   return (
     <div>

@@ -11,7 +11,6 @@ const AllStudentMarksForEachPaper = () => {
       `${import.meta.env.VITE_REACT_BACKEND_URL}/resultpaper/${id}`,
       null
     );
-  console.log(PaperResults);
 
   return (
     <div className="centered-container-conversation">

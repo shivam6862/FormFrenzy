@@ -15,7 +15,7 @@ const BrowsePapersPage = () => {
       `${import.meta.env.VITE_REACT_BACKEND_URL}/shared/`,
       []
     );
-  console.log(myPapers);
+
   return (
     <div>
       <h2 className="section-heading">My Papers</h2>

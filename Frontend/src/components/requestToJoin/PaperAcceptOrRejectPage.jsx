@@ -33,8 +33,6 @@ const PaperAcceptOrRejectPage = () => {
     });
   };
 
-  console.log(paper);
-
   return (
     <div className="centered-container-accept-reject-display">
       {paper.ownerId === user.uid ? (

@@ -87,9 +87,9 @@ Then you hve to get the firebaseConfig keys file which you have to put .env file
    VITE_REACT_appId= "your app Id"
    ```
 5. Enter your MONGODB DATABASE URL and put it in `.env` file in backend directory
-    ```sh
-    MONGODB_URL= "your mongodb url"
-    ```
+   ```sh
+   MONGODB_URL= "your mongodb url"
+   ```
 6. Make the database in your mongodb server named as `test-app` and make the following collection
    ```sh
    annswerpaper
@@ -124,7 +124,7 @@ FormFrenzy also offers a unique feature for exam givers, which enables them to c
 
 Overall, FormFrenzy is a powerful and user-friendly application that makes creating and managing forms, quizzes, and exams simple and efficient. Its range of features, including customization options, analytics, and group exam chat, makes it an ideal tool for educators, businesses, and anyone else who needs to create and manage forms and quizzes. <br/>
 
-![alt text](https://github.com/shivam6862/Quiz-App/blob/master/Frontend/public/QuizApp.png).
+<a href="https://github.com/shivam6862/"><img src="https://github.com/shivam6862/Quiz-App/blob/master/Frontend/public/QuizApp.png" style="border-radius:12px"></a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -170,8 +170,7 @@ Use this space to list resources you find helpful and would like to give credit 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [react-url]: https://reactjs.org/
-
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[NodeJs-url]: https://nodejs.org/en
-[Mongodb-url]:https://www.mongodb.com/
-[VisualStudioCode-url]: https://code.visualstudio.com/
+[nodejs-url]: https://nodejs.org/en
+[mongodb-url]: https://www.mongodb.com/
+[visualstudiocode-url]: https://code.visualstudio.com/

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useProtectedResources } from "../data/useProtectedResources";
 import { useUser } from "../auth/useUser";
+import LoadingSpinner from "../ui/LoadingSpinner";
 
 const ConversationsListPage = () => {
   const { user } = useUser();
@@ -10,7 +11,7 @@ const ConversationsListPage = () => {
   );
 
   return isLoading ? (
-    <p>Loading messages...</p>
+    <LoadingSpinner />
   ) : (
     <div className="centered-container-conversation">
       <h1 className="section-heading"> Conversation List</h1>

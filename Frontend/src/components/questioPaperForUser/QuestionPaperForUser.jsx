@@ -98,7 +98,9 @@ const QuestionPaperForUser = () => {
     <div className="AnswerPaper_box">
       {!isLoadingUsers && !isLoading ? (
         <>
-          {!confirmEnter ? (
+          {!confirmEnter &&
+          questionPaper.ownerId != user.uid &&
+          questionPaper.message != "User is not allowed to get paper!" ? (
             <AsktoEnter
               setConfirmEnter={setConfirmEnter}
               questionPaper={questionPaper}
@@ -115,9 +117,13 @@ const QuestionPaperForUser = () => {
                   </div>
                 ) : (
                   <div>
-                    <div className="CurrentTimeToStart">
-                      Time Started : {index} sec
-                    </div>
+                    {questionPaper.ownerId != user.uid ? (
+                      <div className="CurrentTimeToStart">
+                        Time left : {index} sec
+                      </div>
+                    ) : (
+                      <></>
+                    )}
                     <ConversationsListPage />
                     <NewConversationPage />
                     <PaperAcceptOrRejectPage />

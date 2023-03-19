@@ -15,6 +15,7 @@ const SingupPage = () => {
   const [passwordValue, setPasswordValue] = useState("");
   const [signUpError, setSignUpError] = useState("");
   const [register, setRegister] = useState(false);
+  const [confirmPasswordValue, setConfirmPasswordValue] = useState("");
 
   const auth = getAuth();
 
@@ -33,6 +34,10 @@ const SingupPage = () => {
     }
     if (passwordValue.length < 6) {
       setSignUpError("Password length must be grater than 5...");
+      return;
+    }
+    if (passwordValue != confirmPasswordValue) {
+      setSignUpError("Password must be same!!");
       return;
     }
     setSignUpError("");
@@ -85,6 +90,13 @@ const SingupPage = () => {
           placeholder="Password"
           className="full-width space-after"
           onChange={(e) => setPasswordValue(e.target.value)}
+        />
+        <input
+          type="password"
+          value={confirmPasswordValue}
+          placeholder="Confirm Password"
+          className="full-width space-after"
+          onChange={(e) => setConfirmPasswordValue(e.target.value)}
         />
         <button
           className="full-width sing-in-button"

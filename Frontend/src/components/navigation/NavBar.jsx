@@ -16,10 +16,13 @@ const NavBar = ({ user }) => {
           <img src="/logo.png" alt="logo" className="image"></img>
         </Link>
       </div>
+      <div className="AppName">FormFrenzy App</div>
       <div className="sing-in-out-box">
         {user ? (
           <div className="username-sign-out-navbar">
-            <p className="logged-in-as space-before">Email Id : {user.email}</p>
+            <p className="logged-in-as space-before">
+              {user.email.substring(0, user.email.search("@"))}
+            </p>
             <button className="sign-out-button" onClick={onClickSignOut}>
               Sign Out
             </button>
@@ -35,25 +38,3 @@ const NavBar = ({ user }) => {
 };
 
 export default NavBar;
-
-// <div className="header_info">
-//   <div>
-//     <Link to={`/createnewfrom`}>
-//       <div>Info</div>
-//     </Link>
-//   </div>
-//   <div>
-//     <img src="/logo.png" alt="logo" className="image"></img>
-//   </div>
-// </div>
-// <div className="header_search">
-//   <div>
-//     <input type="text" name="Search" placeholder="Search here...." />
-//   </div>
-// </div>
-// <div className="header_right">
-//   <div>Icons</div>
-//   <div>
-//     <img className="image" src="/avatar.png" alt="logo"></img>
-//   </div>
-// </div>

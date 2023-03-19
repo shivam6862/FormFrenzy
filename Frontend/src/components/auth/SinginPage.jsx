@@ -12,6 +12,7 @@ const SigninPage = () => {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [signInError, setSignInError] = useState("");
+  const [singIn, setsingIn] = useState(false);
   const auth = getAuth();
 
   const onClickSignIn = async () => {
@@ -31,6 +32,7 @@ const SigninPage = () => {
       setSignInError("Password length is small...");
       return;
     }
+    setsingIn(true);
     setSignInError("");
 
     try {
@@ -38,6 +40,7 @@ const SigninPage = () => {
       await signInWithEmailAndPassword(auth, emailValue, passwordValue);
       navigate("/");
     } catch (e) {
+      setsingIn(false);
       setSignInError(e.message);
     }
   };
@@ -63,7 +66,11 @@ const SigninPage = () => {
           className="full-width space-after"
           onChange={(e) => setPasswordValue(e.target.value)}
         />
-        <button className="full-width sing-in-button" onClick={onClickSignIn}>
+        <button
+          className="full-width sing-in-button"
+          onClick={onClickSignIn}
+          disabled={singIn}
+        >
           Sign In
         </button>
       </div>

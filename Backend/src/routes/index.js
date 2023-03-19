@@ -27,6 +27,8 @@ const getEmailUidRoute = require("./getEmailUidRoute");
 const addAsktoEnterInPaperRoute = require("./addAsktoEnterInPaperRoute");
 const getPaperDoneRoute = require("./getPaperDoneRoute");
 
+const getDeletePaperRoute = require("./getDeletePaperRoute");
+
 module.exports = routes = [
   addQuestionPaper,
   getUserConversationsRoute,
@@ -48,4 +50,5 @@ module.exports = routes = [
   getEmailUidRoute,
   addAsktoEnterInPaperRoute,
   getPaperDoneRoute,
+  getDeletePaperRoute,
 ];

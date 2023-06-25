@@ -1,6 +1,5 @@
 <br />
 <div align="center">
-<h3> <u>Winter Assignment IMG IITR<br> </u></h3>
 <h2 align="center">FormFrenzy</h2>
 
   <p align="center">

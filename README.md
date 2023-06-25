@@ -123,7 +123,7 @@ FormFrenzy also offers a unique feature for exam givers, which enables them to c
 
 Overall, FormFrenzy is a powerful and user-friendly application that makes creating and managing forms, quizzes, and exams simple and efficient. Its range of features, including customization options, analytics, and group exam chat, makes it an ideal tool for educators, businesses, and anyone else who needs to create and manage forms and quizzes. <br/>
 
-<a href="https://github.com/shivam6862/"><img src="https://github.com/shivam6862/Quiz-App/blob/master/Frontend/public/QuizApp.png" style="border-radius:12px"></a>
+<a href="https://github.com/shivam6862/"><img src="./Frontend/public/QuizApp.png" style="border-radius:12px"></a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
